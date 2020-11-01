@@ -15,7 +15,10 @@
 #endif
 
 
-class SYNC_CLASS CSyncEvent {
+class SYNC_CLASS CSyncEvent
+{
+		struct SyncEventImpl;
+		typedef std::unique_ptr<SyncEventImpl> SyncEvImplPtr;
 public:
 	CSyncEvent();
 	~CSyncEvent();
@@ -41,13 +44,14 @@ private:
 	CSyncEvent(const CSyncEvent&);
 	CSyncEvent&operator=(const CSyncEvent&);
 private:
-	struct SyncEventImpl;
-	typedef std::unique_ptr<SyncEventImpl> SyncEvImplPtr;
 	SyncEvImplPtr m_impl;
 };
 
 
-class SYNC_CLASS CSyncMutex {
+class SYNC_CLASS CSyncMutex 
+{
+		struct SyncMutexImpl;
+		typedef std::unique_ptr<SyncMutexImpl> SyncMutexPtr;
 public:
 	CSyncMutex();
 	~CSyncMutex();
@@ -66,13 +70,14 @@ private:
 	CSyncMutex& operator=(const CSyncMutex&);
 
 private:
-	struct SyncMutexImpl;
-	typedef std::unique_ptr<SyncMutexImpl> SyncMutexPtr;
 	SyncMutexPtr m_impl;
 };
 
 
-class SYNC_CLASS CSyncSmart {
+class SYNC_CLASS CSyncSmart 
+{
+	class SyncSmartImpl;
+	typedef std::unique_ptr<SyncSmartImpl> SyncSmartPtr;
 public:
 	explicit CSyncSmart(CSyncMutex* ptr);
 	~CSyncSmart();
@@ -93,8 +98,6 @@ private:
 	CSyncSmart& operator=(const CSyncSmart&);
 
 private:
-	class SyncSmartImpl;
-	typedef std::unique_ptr<SyncSmartImpl> SyncSmartPtr;
 	SyncSmartPtr m_impl;
 };
 #endif

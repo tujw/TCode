@@ -12,7 +12,8 @@ typedef HANDLE SyncEvent;
 #define sem_t SyncEvent;
 #endif
 
-struct CSyncEvent::SyncEventImpl{
+struct CSyncEvent::SyncEventImpl
+{
 	SyncEvent event;
 	bool bEvent;
 	bool bReset;
@@ -26,7 +27,9 @@ struct CSyncEvent::SyncEventImpl{
 };
 
 CSyncEvent::CSyncEvent()
-	: m_impl(new SyncEventImpl){
+	: m_impl(new SyncEventImpl)
+{
+
 }
 
 CSyncEvent::~CSyncEvent()
@@ -82,7 +85,8 @@ int CSyncEvent::WaitEvent(unsigned long millisecond)
 
 
 
-struct CSyncMutex::SyncMutexImpl {
+struct CSyncMutex::SyncMutexImpl 
+{
 #ifdef _MSC_VER
 	typedef CRITICAL_SECTION  SyncMutex;
 #else
@@ -130,49 +134,59 @@ void CSyncMutex::Unlock()
 #endif
 }
 
-class CSyncSmart::SyncSmartImpl{
+class CSyncSmart::SyncSmartImpl
+{
 public:
 	CSyncMutex* m_mutexPtr;
-	SyncSmartImpl() : m_mutexPtr(nullptr){}
+	SyncSmartImpl() : m_mutexPtr(nullptr)
+	{
+	}
 };
 
 CSyncSmart::CSyncSmart(CSyncMutex* ptr)
-	: m_impl(new SyncSmartImpl){
+	: m_impl(new SyncSmartImpl)
+{
 		m_impl->m_mutexPtr = ptr;
 		
-		if(m_impl->m_mutexPtr){
+		if(m_impl->m_mutexPtr)
+		{
 			m_impl->m_mutexPtr->Lock();
 		}
 }
 
 CSyncSmart::~CSyncSmart()
 {
-	if(m_impl->m_mutexPtr){
+	if(m_impl->m_mutexPtr)
+	{
 		m_impl->m_mutexPtr->Unlock();
 	}
 }
 
 void CSyncSmart::Lock()
 {
-		if(m_impl->m_mutexPtr){
+		if(m_impl->m_mutexPtr)
+		{
 			m_impl->m_mutexPtr->Lock();
 		}
 }
 
 void CSyncSmart::Lock(CSyncMutex* ptr)
 {
-	if(m_impl->m_mutexPtr){
+	if(m_impl->m_mutexPtr)
+	{
 		m_impl->m_mutexPtr->Unlock();
 	}
 	m_impl->m_mutexPtr = ptr;
-	if(m_impl->m_mutexPtr){
+	if(m_impl->m_mutexPtr)
+	{
 		m_impl->m_mutexPtr->Lock();
 	}
 }
 
 void CSyncSmart::Unlock()
 {
-	if(m_impl->m_mutexPtr){
+	if(m_impl->m_mutexPtr)
+	{
 		m_impl->m_mutexPtr->Unlock();
 	}
 }

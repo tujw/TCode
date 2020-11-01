@@ -25,6 +25,5 @@ int main(int argc, char* argv[])
 	printf("sorted\n");
 	std::for_each(nums, nums + 5, [](const int& num){printf("%d\t", num);});
 	getchar();
-	getchar();
 	return 0;
 }
