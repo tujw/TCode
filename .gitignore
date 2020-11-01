@@ -35,4 +35,6 @@
 *.suo
 *.sdf
 *.opensdf
+prj/windows/bin
+prj/windows/build
 
