@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TCode", "..\..\prj\windows\TCode\TCode.vcxproj", "{E90A4680-8DE9-423C-A5BF-EE570F2D7FDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E90A4680-8DE9-423C-A5BF-EE570F2D7FDF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E90A4680-8DE9-423C-A5BF-EE570F2D7FDF}.Debug|Win32.Build.0 = Debug|Win32
+		{E90A4680-8DE9-423C-A5BF-EE570F2D7FDF}.Release|Win32.ActiveCfg = Release|Win32
+		{E90A4680-8DE9-423C-A5BF-EE570F2D7FDF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
